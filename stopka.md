@@ -1,52 +1,30 @@
-<div style="background: linear-gradient(145deg, #101014, #08080a); border: 1px solid #22222a; border-radius: 20px; padding: 40px 30px; margin-top: 50px; color: #b9bbbe; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+<div style="background: #0d0d11; border-top: 1px solid #1e1e24; padding: 25px 20px; margin-top: 60px; color: #8e8e93; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.9rem;">
   
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; border-bottom: 1px solid #22222a; padding-bottom: 30px;">
+  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
     
-    <!-- Kolumna 1: Branding -->
-    <div>
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-        <span style="font-size: 24px;">🦆</span>
-        <strong style="color: #ffffff; font-size: 1.2em; text-transform: uppercase; letter-spacing: 0.5px;">LazyDuck Network</strong>
-      </div>
-      <p style="font-size: 0.9em; line-height: 1.5; color: #8e8e93; margin-bottom: 15px;">
-        Niezależne studio technologiczne tworzące proste, szybkie i dopracowane narzędzia pod osłoną mroku.
-      </p>
-      <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85em; color: #43b581;">
-        <span style="width: 8px; height: 8px; background-color: #43b581; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #43b581;"></span>
-        Wszystkie systemy online
+    <!-- Lewa strona: Branding -->
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px;">🦆</span>
+      <div>
+        <strong style="color: #ffffff; font-size: 1rem; letter-spacing: 0.5px;">LazyDuck Network</strong>
+        <div style="font-size: 0.8rem; color: #6b6b72; margin-top: 2px;">Niezależne studio technologiczne</div>
       </div>
     </div>
 
-    <!-- Kolumna 2: Nawigacja -->
-    <div>
-      <p style="color: #ffee00; font-weight: bold; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; margin-bottom: 15px;">Nawigacja</p>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.9em;">
-        <li><a href="#/" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Strona Główna</a></li>
-        <li><a href="#/wstep" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Pierwsze Kroki</a></li>
-        <li><a href="#/authors" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Zespół & Autorzy</a></li>
-      </ul>
+    <!-- Srodek: Szybkie linki -->
+    <div style="display: flex; gap: 20px; font-size: 0.85rem;">
+      <a href="#/" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Strona Główna</a>
+      <a href="#/wstep" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Pierwsze Kroki</a>
+      <a href="#/authors" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Autorzy</a>
+      <a href="https://github.com/LazyDuckNetwork" target="_blank" style="color: #ffee00; text-decoration: none;">GitHub →</a>
     </div>
 
-    <!-- Kolumna 3: Społeczność -->
-    <div>
-      <p style="color: #ffee00; font-weight: bold; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; margin-bottom: 15px;">Społeczność</p>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.9em;">
-        <li><a href="https://github.com/LazyDuckNetwork" target="_blank" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">GitHub Studio →</a></li>
-        <li><a href="https://github.com/LazyDuckNetwork/docs" target="_blank" style="color: #b9bbbe; text-decoration: none; transition: color 0.2s;">Repozytorium Docs →</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Dolna belka -->
-  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85em; color: #72767d;">
-    <div>
-      © 2026 LazyDuck Network.
-    </div>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <img src="Ewewerban.png" alt="Ewewerban" style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #ffee00; object-fit: cover;">
+    <!-- Prawa strona: Autor -->
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+      <img src="Ewewerban.png" alt="Ewewerban" style="width: 22px; height: 22px; border-radius: 50%; border: 1px solid #ffee00; object-fit: cover;">
       <span>Stworzył <strong style="color: #ff8800;">Ewewerban</strong></span>
     </div>
+
   </div>
 
 </div>
