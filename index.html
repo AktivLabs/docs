@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 
   <title>LazyDuck Network — Dokumentacja</title>
   <meta name="description" content="Oficjalna dokumentacja i baza wiedzy LazyDuck Network.">
@@ -37,15 +38,29 @@
       text-shadow: 0 0 10px rgba(255, 238, 0, 0.3);
     }
 
+    .sidebar ul {
+      padding-left: 15px;
+    }
+
     .sidebar ul li a {
       color: #aaaaaa !important;
       transition: all 0.2s ease;
+      text-decoration: none;
     }
 
     .sidebar ul li a:hover,
     .sidebar ul li.active > a {
       color: #ffee00 !important;
       font-weight: bold;
+    }
+
+    .sidebar-section-title {
+      color: #ffee00 !important;
+      font-weight: bold;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 15px 0 5px 0;
     }
 
     /* Główna treść */
@@ -108,6 +123,7 @@
       padding: 18px;
       transition: all 0.2s ease;
       text-decoration: none !important;
+      display: block;
     }
 
     .auto-post-card:hover {
@@ -134,7 +150,6 @@
   <div id="app">Ładowanie dokumentacji...</div>
 
   <script>
-    // Konfiguracja Twojego repozytorium GitHub
     const GITHUB_REPO = 'LazyDuckNetwork/docs'; 
 
     window.\$docsify = {
@@ -142,55 +157,88 @@
       repo: GITHUB_REPO,
       notFoundPage: true,
       auto2top: true,
-      loadSidebar: false, // Wyłączamy statyczny sidebar na rzecz dynamicznego
+      loadSidebar: false, // Własny dynamiczny sidebar budowany przez skrypt
       
       plugins: [
         function (hook, vm) {
-          // Automatyczne generowanie Sidebar oraz Kafelek na stronie głównej
           hook.beforeEach(function (content, next) {
-            fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/docs`)
+            // Pobieramy pliki bezpośrednio z głównego katalogu repozytorium na GitHubie
+            fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents`)
               .then(res => res.json())
               .then(files => {
                 if (!Array.isArray(files)) return next(content);
 
-                // Filtrujemy pliki .md (omijając pliki systemowe z '_')
-                const markdownFiles = files.filter(f => f.name.endsWith('.md') && !f.name.startsWith('_') && f.name !== 'README.md');
+                // Filtrujemy pliki .md (pomijamy systemowe z '_', README, authors, wstep)
+                const markdownFiles = files.filter(f => 
+                  f.name.endsWith('.md') && 
+                  !f.name.startsWith('_') && 
+                  f.name !== 'README.md' && 
+                  f.name !== 'authors.md' && 
+                  f.name !== 'wstep.md'
+                );
 
-                // 1. Budowanie dynamicznego sidebara
+                // 1. Budowanie dynamicznego sidebara w czystym HTML
                 let sidebarHTML = `
-* **Strona Główna**
-  * [Wstęp](README.md)
-* **O nas**
-  * [Autorzy](authors.md)
-* **Wpisy & Artykuły**
-`;
-                markdownFiles.forEach(file => {
-                  if (file.name !== 'authors.md' && file.name !== 'wstep.md') {
-                    const cleanTitle = file.name.replace('.md', '').replace(/-/g, ' ');
-                    sidebarHTML += `  * [${cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1)}](${file.name})\n`;
-                  }
-                });
+                  <ul style="list-style: none; padding: 0;">
+                    <li>
+                      <div class="sidebar-section-title">Strona Główna</div>
+                      <ul style="list-style: none; padding-left: 10px;">
+                        <li><a href="#/">Wstęp & Newsy</a></li>
+                        <li><a href="#/wstep">Pierwsze Kroki</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="sidebar-section-title">O nas</div>
+                      <ul style="list-style: none; padding-left: 10px;">
+                        <li><a href="#/authors">Autorzy</a></li>
+                      </ul>
+                    </li>
+                `;
 
-                // Wstawianie sidebara do DOM
-                const sidebarEl = document.querySelector('.sidebar-nav');
-                if (sidebarEl) sidebarEl.innerHTML = window.Docsify.compiler._renderSidebar(sidebarHTML);
+                if (markdownFiles.length > 0) {
+                  sidebarHTML += `
+                    <li>
+                      <div class="sidebar-section-title">Wpisy & Artykuły</div>
+                      <ul style="list-style: none; padding-left: 10px;">
+                  `;
+                  markdownFiles.forEach(file => {
+                    const cleanName = file.name.replace('.md', '');
+                    const cleanTitle = cleanName.replace(/-/g, ' ');
+                    const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
+                    sidebarHTML += `<li><a href="#/${cleanName}">${formattedTitle}</a></li>`;
+                  });
+                  sidebarHTML += `</ul></li>`;
+                }
 
-                // 2. Jeśli jesteśmy na stronie głównej, dodajmy automatyczną siatkę z nowymi wpisami
+                sidebarHTML += `</ul>`;
+
+                // Wstawiamy sidebar do DOM
+                setTimeout(() => {
+                  const sidebarEl = document.querySelector('.sidebar-nav');
+                  if (sidebarEl) sidebarEl.innerHTML = sidebarHTML;
+                }, 50);
+
+                // 2. Generowanie kafelków na stronie głównej (jeśli to strona główna)
                 if (vm.route.path === '/') {
                   let cardsHTML = '<div class="auto-posts-grid">';
                   markdownFiles.forEach(file => {
-                    const cleanTitle = file.name.replace('.md', '').replace(/-/g, ' ');
+                    const cleanName = file.name.replace('.md', '');
+                    const cleanTitle = cleanName.replace(/-/g, ' ');
+                    const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
                     cardsHTML += `
-                      <a href="#/${file.name}" class="auto-post-card">
+                      <a href="#/${cleanName}" class="auto-post-card">
                         <p style="color: #ffee00; font-weight: bold; margin-bottom: 5px;">📄 WPIS</p>
-                        <h4>${cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1)}</h4>
-                        <p>Kliknij, aby przeczytać wpis →</p>
+                        <h4>${formattedTitle}</h4>
+                        <p>Kliknij, aby przeczytać artykuł →</p>
                       </a>
                     `;
                   });
                   cardsHTML += '</div>';
 
-                  // Podmieniamy tag <!-- AUTO_POSTS --> na gotową siatkę kafelków
+                  if (markdownFiles.length === 0) {
+                    cardsHTML = '<p style="color: #8e8e93; margin-top: 20px;">Brak dodatkowych wpisów. Utwórz nowy plik `.md` w repozytorium, aby pojawił się tutaj automatycznie!</p>';
+                  }
+
                   content = content.replace('<!-- AUTO_POSTS -->', cardsHTML);
                 }
 
