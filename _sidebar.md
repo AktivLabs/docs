@@ -1,4 +1,2 @@
-- [Read Me](README)
-- [Example Second Page](second-page)
-- * **O nas**
+  * [Strona Główna](README.md)
   * [Autorzy](authors.md)
