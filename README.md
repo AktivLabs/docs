@@ -32,6 +32,4 @@
 
 ---
 
-### 📰 Najnowsze Wpisy & Sekcje
-
 <!-- AUTO_POSTS -->
