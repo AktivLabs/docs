@@ -48,6 +48,32 @@
       font-weight: bold;
     }
 
+    /* CIEMNY STYL DLA WYSZUKIWARKI (Search Bar) */
+    .search input {
+      background-color: #121215 !important;
+      border: 1px solid #222226 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .search input:focus {
+      border-color: #ffee00 !important;
+      box-shadow: 0 0 10px rgba(255, 238, 0, 0.2) !important;
+      outline: none !important;
+    }
+
+    .search input::placeholder {
+      color: #6e6e73 !important;
+    }
+
+    .search .results-panel {
+      background-color: #0d0d0f !important;
+      border: 1px solid #222226 !important;
+      color: #e0e0e0 !important;
+    }
+
     /* Główna treść i nagłówki */
     .markdown-section {
       background-color: #080808 !important;
@@ -67,18 +93,35 @@
       text-decoration: underline;
     }
 
-    /* AUTOMATYCZNA NAPRAWA ROZMIARU AWATARU (Ewewerban.png) */
-    .markdown-section img[src*="Ewewerban"],
-    .markdown-section img[alt*="Ewewerban"] {
-      width: 100px !important;
-      height: 100px !important;
-      max-width: 100px !important;
+    /* BLOCZEK AUTORA (.author-badge) + POPRAWKA OBRAZKA */
+    .author-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      background: #121215 !important;
+      padding: 6px 16px 6px 8px !important;
+      border-radius: 30px !important;
+      border: 1px solid #222226 !important;
+      font-size: 0.9em !important;
+      color: #aaaaaa !important;
+      margin-bottom: 20px !important;
+    }
+
+    .author-badge img {
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
+      max-width: 42px !important;
       border-radius: 50% !important;
       object-fit: cover !important;
       border: 2px solid #ffee00 !important;
-      box-shadow: 0 0 15px rgba(255, 238, 0, 0.3) !important;
-      display: block;
-      margin: 20px 0;
+      margin: 0 !important;
+      display: inline-block !important;
+      box-shadow: none !important;
+    }
+
+    .author-badge strong {
+      color: #ff8800 !important;
     }
   </style>
 </head>
@@ -94,7 +137,6 @@
       auto2top: true,
       loadSidebar: true,
 
-      // Wtyczka automatycznie doczepiająca stopkę na dole każdej strony
       plugins: [
         function(hook, vm) {
           let footerCache = null;
