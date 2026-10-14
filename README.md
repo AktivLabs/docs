@@ -34,28 +34,4 @@
 
 ### 📰 Najnowsze Wpisy & Sekcje
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px;">
-
-  <!-- Kafel 1 -->
-  <div style="background: #0f0f12; border: 1px solid #1f1f26; border-radius: 16px; padding: 20px; transition: border-color 0.2s;">
-    <p style="color: #ffee00; font-size: 0.8em; font-weight: bold; margin: 0 0 8px 0;">O NAS</p>
-    <h3 style="margin: 0 0 10px 0; font-size: 1.2em; border: none; padding: 0;">
-      <a href="#/authors" style="color: #ffffff !important; text-decoration: none !important;">Poznaj Zespół LazyDuck</a>
-    </h3>
-    <p style="color: #8e8e93; font-size: 0.9em; line-height: 1.5; margin: 0;">
-      Sprawdź, kto odpowiada za kod, grafikę i kierunek rozwoju sieci LazyDuck.
-    </p>
-  </div>
-
-  <!-- Kafel 2 -->
-  <div style="background: #0f0f12; border: 1px solid #1f1f26; border-radius: 16px; padding: 20px; transition: border-color 0.2s;">
-    <p style="color: #ffee00; font-size: 0.8em; font-weight: bold; margin: 0 0 8px 0;">DOKUMENTACJA</p>
-    <h3 style="margin: 0 0 10px 0; font-size: 1.2em; border: none; padding: 0;">
-      <a href="#/wstep" style="color: #ffffff !important; text-decoration: none !important;">Pierwsze Kroki & Poradniki</a>
-    </h3>
-    <p style="color: #8e8e93; font-size: 0.9em; line-height: 1.5; margin: 0;">
-      Przewodniki po naszych systemach, instrukcje konfiguracji i changelogi.
-    </p>
-  </div>
-
-</div>
+<!-- AUTO_POSTS -->
