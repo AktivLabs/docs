@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 
   <title>LazyDuck Network — Dokumentacja</title>
   <meta name="description" content="Oficjalna dokumentacja i baza wiedzy LazyDuck Network.">
@@ -13,7 +12,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
 
   <style>
-    /* Global Background Fix */
+    /* Globalny ciemny motyw */
     html, body, main, .content, #app, article {
       background-color: #080808 !important;
       color: #e0e0e0 !important;
@@ -26,7 +25,7 @@
       --sidebar-width: 280px;
     }
 
-    /* Pasek boczny (Sidebar) */
+    /* Pasek boczny (Sidebar) w stylu Discorda */
     .sidebar {
       background-color: #0d0d0f !important;
       border-right: 1px solid #1e1e22 !important;
@@ -38,14 +37,9 @@
       text-shadow: 0 0 10px rgba(255, 238, 0, 0.3);
     }
 
-    .sidebar ul {
-      padding-left: 15px;
-    }
-
     .sidebar ul li a {
       color: #aaaaaa !important;
       transition: all 0.2s ease;
-      text-decoration: none;
     }
 
     .sidebar ul li a:hover,
@@ -54,16 +48,7 @@
       font-weight: bold;
     }
 
-    .sidebar-section-title {
-      color: #ffee00 !important;
-      font-weight: bold;
-      font-size: 0.85em;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 15px 0 5px 0;
-    }
-
-    /* Główna treść */
+    /* Główna treść i nagłówki */
     .markdown-section {
       background-color: #080808 !important;
       color: #e0e0e0 !important;
@@ -81,68 +66,6 @@
       color: #ffee00 !important;
       text-decoration: underline;
     }
-
-    /* Styl dla badge autora */
-    .author-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #121215;
-      padding: 8px 18px 8px 10px;
-      border-radius: 30px;
-      border: 1px solid #222226;
-      font-size: 0.95em;
-      color: #aaaaaa;
-      margin-bottom: 25px;
-    }
-
-    .author-badge img {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #ffee00;
-    }
-
-    .author-badge strong {
-      color: #ff8800;
-    }
-
-    /* Dynamiczna siatka najnowszych wpisów */
-    .auto-posts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .auto-post-card {
-      background: #0f0f12;
-      border: 1px solid #1f1f26;
-      border-radius: 14px;
-      padding: 18px;
-      transition: all 0.2s ease;
-      text-decoration: none !important;
-      display: block;
-    }
-
-    .auto-post-card:hover {
-      border-color: #ffee00;
-      transform: translateY(-3px);
-      box-shadow: 0 0 15px rgba(255, 238, 0, 0.15);
-    }
-
-    .auto-post-card h4 {
-      margin: 0 0 8px 0;
-      color: #ffffff !important;
-      font-size: 1.1em;
-    }
-
-    .auto-post-card p {
-      margin: 0;
-      color: #8e8e93;
-      font-size: 0.85em;
-    }
   </style>
 </head>
 
@@ -150,101 +73,29 @@
   <div id="app">Ładowanie dokumentacji...</div>
 
   <script>
-    const GITHUB_REPO = 'LazyDuckNetwork/docs'; 
-
-    window.\$docsify = {
+    window.$docsify = {
       name: 'LazyDuck',
-      repo: GITHUB_REPO,
+      repo: 'LazyDuckNetwork/docs',
       notFoundPage: true,
       auto2top: true,
-      loadSidebar: false, // Własny dynamiczny sidebar budowany przez skrypt
-      
+      loadSidebar: true, // Włącza korzystanie z pliku _sidebar.md generowanego przez GitHub Actions
+
+      // Wtyczka automatycznie doczepiająca stopka.md na dole każdej strony
       plugins: [
-        function (hook, vm) {
-          hook.beforeEach(function (content, next) {
-            // Pobieramy pliki bezpośrednio z głównego katalogu repozytorium na GitHubie
-            fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents`)
-              .then(res => res.json())
-              .then(files => {
-                if (!Array.isArray(files)) return next(content);
+        function(hook, vm) {
+          let footerCache = null;
 
-                // Filtrujemy pliki .md (pomijamy systemowe z '_', README, authors, wstep)
-                const markdownFiles = files.filter(f => 
-                  f.name.endsWith('.md') && 
-                  !f.name.startsWith('_') && 
-                  f.name !== 'README.md' && 
-                  f.name !== 'authors.md' && 
-                  f.name !== 'wstep.md'
-                );
-
-                // 1. Budowanie dynamicznego sidebara w czystym HTML
-                let sidebarHTML = `
-                  <ul style="list-style: none; padding: 0;">
-                    <li>
-                      <div class="sidebar-section-title">Strona Główna</div>
-                      <ul style="list-style: none; padding-left: 10px;">
-                        <li><a href="#/">Wstęp & Newsy</a></li>
-                        <li><a href="#/wstep">Pierwsze Kroki</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="sidebar-section-title">O nas</div>
-                      <ul style="list-style: none; padding-left: 10px;">
-                        <li><a href="#/authors">Autorzy</a></li>
-                      </ul>
-                    </li>
-                `;
-
-                if (markdownFiles.length > 0) {
-                  sidebarHTML += `
-                    <li>
-                      <div class="sidebar-section-title">Wpisy & Artykuły</div>
-                      <ul style="list-style: none; padding-left: 10px;">
-                  `;
-                  markdownFiles.forEach(file => {
-                    const cleanName = file.name.replace('.md', '');
-                    const cleanTitle = cleanName.replace(/-/g, ' ');
-                    const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
-                    sidebarHTML += `<li><a href="#/${cleanName}">${formattedTitle}</a></li>`;
-                  });
-                  sidebarHTML += `</ul></li>`;
-                }
-
-                sidebarHTML += `</ul>`;
-
-                // Wstawiamy sidebar do DOM
-                setTimeout(() => {
-                  const sidebarEl = document.querySelector('.sidebar-nav');
-                  if (sidebarEl) sidebarEl.innerHTML = sidebarHTML;
-                }, 50);
-
-                // 2. Generowanie kafelków na stronie głównej (jeśli to strona główna)
-                if (vm.route.path === '/') {
-                  let cardsHTML = '<div class="auto-posts-grid">';
-                  markdownFiles.forEach(file => {
-                    const cleanName = file.name.replace('.md', '');
-                    const cleanTitle = cleanName.replace(/-/g, ' ');
-                    const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
-                    cardsHTML += `
-                      <a href="#/${cleanName}" class="auto-post-card">
-                        <p style="color: #ffee00; font-weight: bold; margin-bottom: 5px;">📄 WPIS</p>
-                        <h4>${formattedTitle}</h4>
-                        <p>Kliknij, aby przeczytać artykuł →</p>
-                      </a>
-                    `;
-                  });
-                  cardsHTML += '</div>';
-
-                  if (markdownFiles.length === 0) {
-                    cardsHTML = '<p style="color: #8e8e93; margin-top: 20px;">Brak dodatkowych wpisów. Utwórz nowy plik `.md` w repozytorium, aby pojawił się tutaj automatycznie!</p>';
-                  }
-
-                  content = content.replace('<!-- AUTO_POSTS -->', cardsHTML);
-                }
-
-                next(content);
+          hook.afterEach(function(html, next) {
+            if (footerCache) {
+              return next(html + footerCache);
+            }
+            fetch('stopka.md')
+              .then(res => res.text())
+              .then(text => {
+                footerCache = text;
+                next(html + text);
               })
-              .catch(() => next(content));
+              .catch(() => next(html));
           });
         }
       ],
