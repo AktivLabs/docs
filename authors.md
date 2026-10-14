@@ -16,4 +16,4 @@ Poznaj twórców stojących za projektami LazyDuck.
 
 ---
 
-> Chcesz dołączyć do zespołu lub zgłosić błąd? Odwiedź nasze repozytorium na GitHubie!
+> Chcesz dołączyć do zespołu lub zgłosić błąd? [Odwiedź nasze repozytorium na GitHubie!](https://github.com/LazyDuckNetwork)
