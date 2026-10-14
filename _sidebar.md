@@ -4,3 +4,4 @@
 * **O nas**
   * [Autorzy](authors.md)
 * **Wpisy & Artykuły**
+  * [Poczatek](poczatek.md)
