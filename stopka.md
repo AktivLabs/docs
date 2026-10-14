@@ -39,11 +39,22 @@
       box-shadow: 0 0 10px rgba(255, 238, 0, 0.1);
     }
 
+    .buycoffee-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: #ffee00;
+      transition: fill 0.2s ease;
+    }
+
     .buycoffee-btn:hover {
       background: #ffee00;
       color: #000000;
       box-shadow: 0 0 18px rgba(255, 238, 0, 0.4);
       transform: translateY(-2px);
+    }
+
+    .buycoffee-btn:hover svg {
+      fill: #000000;
     }
 
     .footer-nav-link {
@@ -95,9 +106,10 @@
     <!-- PRZYCISK KAWA + AUTOR -->
     <div style="display: flex; align-items: center; gap: 15px;">
       
-      <!-- BuyCoffee.to Button -->
+      <!-- BuyCoffee.to Button (Wektorowa ikonka filiżanki) -->
       <a href="https://buycoffee.to/ewewerban" target="_blank" class="buycoffee-btn">
-        <span>☕</span> Postaw kawę
+        <svg viewBox="0 0 24 24"><path d="M2 21h18v-2H2v2zm3-3h12a3 3 0 0 0 3-3V5H4v10a3 3 0 0 0 1 3zm15-9h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9z"/></svg>
+        <span>Postaw kawę</span>
       </a>
 
       <!-- Autor -->
