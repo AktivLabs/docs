@@ -102,29 +102,30 @@
       border: 1px solid #222226 !important;
     }
 
-    /* Styl dla paska autora we wpisach */
+    /* Styl dla paska autora we wpisach (Powiększony avatar) */
     .author-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: #121215;
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 8px 18px 8px 10px;
+      border-radius: 30px;
       border: 1px solid #222226;
-      font-size: 0.9em;
+      font-size: 0.95em;
       color: #aaaaaa;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .author-badge img {
-      width: 24px;
-      height: 24px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid #ffee00;
     }
 
     .author-badge strong {
-      color: #ffee00;
+      color: #ff8800;
     }
   </style>
 
@@ -138,6 +139,7 @@
     window.$docsify = {
       name: 'LazyDuck',
       repo: 'LazyDuckNetwork/docs',
+      notFoundPage: true,
 
       // Sidebar Configuration
       auto2top: true,
