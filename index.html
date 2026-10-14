@@ -66,6 +66,20 @@
       color: #ffee00 !important;
       text-decoration: underline;
     }
+
+    /* AUTOMATYCZNA NAPRAWA ROZMIARU AWATARU (Ewewerban.png) */
+    .markdown-section img[src*="Ewewerban"],
+    .markdown-section img[alt*="Ewewerban"] {
+      width: 100px !important;
+      height: 100px !important;
+      max-width: 100px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #ffee00 !important;
+      box-shadow: 0 0 15px rgba(255, 238, 0, 0.3) !important;
+      display: block;
+      margin: 20px 0;
+    }
   </style>
 </head>
 
@@ -78,9 +92,9 @@
       repo: 'LazyDuckNetwork/docs',
       notFoundPage: true,
       auto2top: true,
-      loadSidebar: true, // Włącza korzystanie z pliku _sidebar.md generowanego przez GitHub Actions
+      loadSidebar: true,
 
-      // Wtyczka automatycznie doczepiająca stopka.md na dole każdej strony
+      // Wtyczka automatycznie doczepiająca stopkę na dole każdej strony
       plugins: [
         function(hook, vm) {
           let footerCache = null;
