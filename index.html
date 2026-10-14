@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 
   <title>LazyDuck Network — Dokumentacja</title>
   <meta name="description" content="Oficjalna dokumentacja i baza wiedzy LazyDuck Network.">
@@ -13,14 +12,13 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
 
   <style>
-    /* Global Background Fix - Eliminacja białego glitcha */
+    /* Global Background Fix */
     html, body, main, .content, #app, article {
       background-color: #080808 !important;
       color: #e0e0e0 !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Custom Styling - LazyDuck Network Aesthetic (#080808 + #ffee00) */
     :root {
       --theme-color: #ffee00;
       --base-background-color: #080808;
@@ -50,7 +48,7 @@
       font-weight: bold;
     }
 
-    /* Główna treść i nagłówki */
+    /* Główna treść */
     .markdown-section {
       background-color: #080808 !important;
       color: #e0e0e0 !important;
@@ -69,40 +67,7 @@
       text-decoration: underline;
     }
 
-    .markdown-section code {
-      background-color: #141416 !important;
-      color: #ffee00 !important;
-      border: 1px solid #222226;
-      border-radius: 4px;
-      padding: 2px 6px;
-    }
-
-    .markdown-section pre {
-      background-color: #101012 !important;
-      border: 1px solid #222226 !important;
-      border-radius: 6px;
-    }
-
-    .markdown-section pre code {
-      color: #e6e6e6 !important;
-      border: none !important;
-    }
-
-    /* Bloki cytatów / uwag */
-    .markdown-section blockquote {
-      background-color: #121215 !important;
-      border-left: 4px solid #ffee00 !important;
-      color: #bbbbbb !important;
-    }
-
-    /* Wyszukiwarka */
-    .search input {
-      background-color: #121215 !important;
-      color: #ffffff !important;
-      border: 1px solid #222226 !important;
-    }
-
-    /* Styl dla paska autora we wpisach (Powiększony avatar) */
+    /* Styl dla badge autora */
     .author-badge {
       display: inline-flex;
       align-items: center;
@@ -127,27 +92,115 @@
     .author-badge strong {
       color: #ff8800;
     }
-  </style>
 
+    /* Dynamiczna siatka najnowszych wpisów */
+    .auto-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .auto-post-card {
+      background: #0f0f12;
+      border: 1px solid #1f1f26;
+      border-radius: 14px;
+      padding: 18px;
+      transition: all 0.2s ease;
+      text-decoration: none !important;
+    }
+
+    .auto-post-card:hover {
+      border-color: #ffee00;
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(255, 238, 0, 0.15);
+    }
+
+    .auto-post-card h4 {
+      margin: 0 0 8px 0;
+      color: #ffffff !important;
+      font-size: 1.1em;
+    }
+
+    .auto-post-card p {
+      margin: 0;
+      color: #8e8e93;
+      font-size: 0.85em;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">Ładowanie dokumentacji...</div>
 
   <script>
-    // Configuration
-    window.$docsify = {
-      name: '🦆 LazyDuck',
-      repo: 'LazyDuckNetwork/docs',
+    // Konfiguracja Twojego repozytorium GitHub
+    const GITHUB_REPO = 'LazyDuckNetwork/docs'; 
+
+    window.\$docsify = {
+      name: 'LazyDuck',
+      repo: GITHUB_REPO,
       notFoundPage: true,
-
-      // Sidebar Configuration
       auto2top: true,
-      loadSidebar: true,
-      maxLevel: 4,
-      subMaxLevel: 3,
+      loadSidebar: false, // Wyłączamy statyczny sidebar na rzecz dynamicznego
+      
+      plugins: [
+        function (hook, vm) {
+          // Automatyczne generowanie Sidebar oraz Kafelek na stronie głównej
+          hook.beforeEach(function (content, next) {
+            fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/docs`)
+              .then(res => res.json())
+              .then(files => {
+                if (!Array.isArray(files)) return next(content);
 
-      // Search Plugin Configuration
+                // Filtrujemy pliki .md (omijając pliki systemowe z '_')
+                const markdownFiles = files.filter(f => f.name.endsWith('.md') && !f.name.startsWith('_') && f.name !== 'README.md');
+
+                // 1. Budowanie dynamicznego sidebara
+                let sidebarHTML = `
+* **Strona Główna**
+  * [Wstęp](README.md)
+* **O nas**
+  * [Autorzy](authors.md)
+* **Wpisy & Artykuły**
+`;
+                markdownFiles.forEach(file => {
+                  if (file.name !== 'authors.md' && file.name !== 'wstep.md') {
+                    const cleanTitle = file.name.replace('.md', '').replace(/-/g, ' ');
+                    sidebarHTML += `  * [${cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1)}](${file.name})\n`;
+                  }
+                });
+
+                // Wstawianie sidebara do DOM
+                const sidebarEl = document.querySelector('.sidebar-nav');
+                if (sidebarEl) sidebarEl.innerHTML = window.Docsify.compiler._renderSidebar(sidebarHTML);
+
+                // 2. Jeśli jesteśmy na stronie głównej, dodajmy automatyczną siatkę z nowymi wpisami
+                if (vm.route.path === '/') {
+                  let cardsHTML = '<div class="auto-posts-grid">';
+                  markdownFiles.forEach(file => {
+                    const cleanTitle = file.name.replace('.md', '').replace(/-/g, ' ');
+                    cardsHTML += `
+                      <a href="#/${file.name}" class="auto-post-card">
+                        <p style="color: #ffee00; font-weight: bold; margin-bottom: 5px;">📄 WPIS</p>
+                        <h4>${cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1)}</h4>
+                        <p>Kliknij, aby przeczytać wpis →</p>
+                      </a>
+                    `;
+                  });
+                  cardsHTML += '</div>';
+
+                  // Podmieniamy tag <!-- AUTO_POSTS --> na gotową siatkę kafelków
+                  content = content.replace('<!-- AUTO_POSTS -->', cardsHTML);
+                }
+
+                next(content);
+              })
+              .catch(() => next(content));
+          });
+        }
+      ],
+
       search: {
         placeholder: 'Szukaj w dokumentacji...',
         noData: 'Brak wyników!',
@@ -156,10 +209,8 @@
     };
   </script>
 
-  <!-- Required -->
+  <!-- Docsify Core & Plugins -->
   <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/docsify.min.js"></script>
-
-  <!-- Recommended Plugins -->
   <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.js"></script>
 
