@@ -41,7 +41,7 @@
   <!-- Dolna belka -->
   <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85em; color: #72767d;">
     <div>
-      © 2026 LazyDuck Network. Kaczka nadepnęła na kabel.
+      © 2026 LazyDuck Network.
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <img src="Ewewerban.png" alt="Ewewerban" style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #ffee00; object-fit: cover;">
