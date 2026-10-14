@@ -4,4 +4,3 @@
 * **O nas**
   * [Autorzy](authors.md)
 * **Wpisy & Artykuły**
-  * [404](404.md)
