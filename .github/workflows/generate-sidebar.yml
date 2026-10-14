@@ -1,0 +1,35 @@
+name: Auto Generate Docsify Sidebar
+
+on:
+  push:
+    paths:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Sidebar & Index
+        run: |
+          echo "* **Strona Główna**" > _sidebar.md
+          echo "  * [Wstęp & Newsy](README.md)" >> _sidebar.md
+          echo "  * [Pierwsze Kroki](wstep.md)" >> _sidebar.md
+          echo "* **O nas**" >> _sidebar.md
+          echo "  * [Autorzy](authors.md)" >> _sidebar.md
+          echo "* **Wpisy & Artykuły**" >> _sidebar.md
+
+          for f in *.md; do
+            if [[ "$f" != "README.md" && "$f" != "wstep.md" && "$f" != "authors.md" && "$f" != "stopka.md" && "$f" != "_404.md" && "$f" != "_sidebar.md" ]]; then
+              title=$(echo "$f" | sed 's/\.md//' | sed 's/-/ /g')
+              echo "  * [${title^}]($f)" >> _sidebar.md
+            fi
+          done
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "LazyDuck Bot"
+          git config --global user.email "bot@lazyduck.network"
+          git add _sidebar.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto: zaktualizowano sidebar" && git push)
