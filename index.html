@@ -1,30 +1,185 @@
-<!-- Aktiv Labs Hero Section -->
-<div style="text-align: center; padding: 40px 10px 20px 10px;">
-  <p style="color: #0EA5E9; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; font-size: 0.9em;">Oficjalny Blog i Dokumentacja</p>
-  <h1 style="font-size: 3em; font-weight: 900; color: #0F172A !important; margin: 0; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; text-shadow: 0 2px 10px rgba(14, 165, 233, 0.15);">
-    AKTIV LABS
-  </h1>
-  <p style="color: #64748B; max-width: 600px; margin: 15px auto 0 auto; font-size: 1.1em; line-height: 1.5;">
-    Little studio from Poland. Narzędzia webowe, eksperymenty i nowoczesne aplikacje tworzone z pasją.
-  </p>
-</div>
+<!DOCTYPE html>
+<html lang="pl">
 
-<!-- Featured / Wyróżniony Wpis Card -->
-<div style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 20px; padding: 30px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-  <span style="background: #F97316; color: #ffffff; font-weight: bold; font-size: 0.75em; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px;">
-    WYRÓŻNIONE
-  </span>
-  <h2 style="color: #10B981 !important; font-size: 1.8em; margin: 15px 0 10px 0; border: none; padding: 0;">
-    WITAJ W AKTIV LABS!
-  </h2>
-  <p style="color: #cbd5e1; font-size: 1.05em; line-height: 1.6; margin-bottom: 20px;">
-    Właśnie wystartowaliśmy z nowym portalem. Znajdziesz tu całą dokumentację, aktualizacje projektów oraz nasze autorskie narzędzia webowe.
-  </p>
-  <a href="#/wstep" style="display: inline-block; background: #0EA5E9; color: #ffffff !important; font-weight: bold; text-decoration: none !important; padding: 12px 24px; border-radius: 12px; transition: transform 0.2s, background-color 0.2s;">
-    Przeczytaj cały artykuł →
-  </a>
-</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 
----
+  <title>Aktiv Labs — Dokumentacja i Blog</title>
+  <meta name="description" content="Oficjalna dokumentacja i baza wiedzy Aktiv Labs. Little studio from Poland.">
 
-<!-- AUTO_POSTS -->
+  <!-- Core Theme Docsify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
+
+  <style>
+    /* Globalny jasny motyw */
+    html, body {
+      background-color: #F8FAFC !important;
+      color: #334155 !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    #app, main, .content {
+      background-color: #F8FAFC !important;
+      color: #334155 !important;
+    }
+
+    :root {
+      --theme-color: #0EA5E9;
+      --base-background-color: #F8FAFC;
+      --sidebar-width: 280px;
+    }
+
+    /* Pasek boczny (Sidebar) w jasnym stylu */
+    .sidebar {
+      background-color: #FFFFFF !important;
+      border-right: 1px solid #E2E8F0 !important;
+    }
+
+    .sidebar .app-name-link {
+      color: #0EA5E9 !important;
+      font-weight: bold;
+    }
+
+    .sidebar ul li a {
+      color: #64748B !important;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar ul li a:hover,
+    .sidebar ul li.active > a {
+      color: #10B981 !important;
+      font-weight: bold;
+    }
+
+    /* STYL DLA WYSZUKIWARKI (Search Bar) */
+    .search input {
+      background-color: #F1F5F9 !important;
+      border: 1px solid #CBD5E1 !important;
+      color: #1E293B !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .search input:focus {
+      border-color: #0EA5E9 !important;
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.15) !important;
+      outline: none !important;
+    }
+
+    .search input::placeholder {
+      color: #94A3B8 !important;
+    }
+
+    .search .results-panel {
+      background-color: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      color: #1E293B !important;
+    }
+
+    /* Główna treść, akapity i nagłówki */
+    .markdown-section {
+      background-color: #F8FAFC !important;
+      color: #475569 !important;
+      max-width: 900px !important;
+    }
+
+    .markdown-section h1, 
+    .markdown-section h2, 
+    .markdown-section h3,
+    .markdown-section h4 {
+      color: #0F172A !important;
+      text-shadow: none !important;
+    }
+
+    .markdown-section p,
+    .markdown-section li,
+    .markdown-section span {
+      color: #334155;
+    }
+
+    .markdown-section a {
+      color: #0EA5E9 !important;
+      text-decoration: underline;
+    }
+
+    /* BLOCZEK AUTORA (.author-badge) */
+    .author-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      background: #FFFFFF !important;
+      padding: 6px 16px 6px 8px !important;
+      border-radius: 30px !important;
+      border: 1px solid #E2E8F0 !important;
+      font-size: 0.9em !important;
+      color: #64748B !important;
+      margin-bottom: 20px !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .author-badge img {
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
+      max-width: 42px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #10B981 !important;
+      margin: 0 !important;
+      display: inline-block !important;
+      box-shadow: none !important;
+    }
+
+    .author-badge strong {
+      color: #F97316 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">Ładowanie dokumentacji Aktiv Labs...</div>
+
+  <script>
+    window.$docsify = {
+      name: 'Aktiv Labs',
+      repo: 'AktivLabs/docs',
+      notFoundPage: true,
+      auto2top: true,
+      loadSidebar: true,
+
+      plugins: [
+        function(hook, vm) {
+          let footerCache = null;
+
+          hook.afterEach(function(html, next) {
+            if (footerCache) {
+              return next(html + footerCache);
+            }
+            fetch('stopka.md')
+              .then(res => res.text())
+              .then(text => {
+                footerCache = text;
+                next(html + text);
+              })
+              .catch(() => next(html));
+          });
+        }
+      ],
+
+      search: {
+        placeholder: 'Szukaj w dokumentacji...',
+        noData: 'Brak wyników!',
+        depth: 3
+      }
+    };
+  </script>
+
+  <!-- Docsify Core & Plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.js"></script>
+
+</body>
+</html>
