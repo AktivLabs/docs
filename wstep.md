@@ -1,19 +1,19 @@
 <div class="author-badge">
-  <img src="Ewewerban.png" alt="Avatar">
-  Napisane przez <strong style="color: #ff8800;">Ewewerban</strong>
+  <img src="Ewewerban.png" alt="Ewewerban">
+  <span>Autor: <strong>Ewewerban</strong></span>
 </div>
 
-# 🦆 Pierwsze Kroki w LazyDuck Network
+# 🧪 Pierwsze Kroki w Aktiv Labs
 
-Oficjalny wstęp do nowej bazy wiedzy i portalu dokumentacji **LazyDuck Network**.
+Oficjalny wstęp do nowej bazy wiedzy i portalu dokumentacji **Aktiv Labs**.
 
 ---
 
-### 🌟 Czym jest LazyDuck Network?
+### 🌟 Czym jest Aktiv Labs?
 
-**LazyDuck Network** to niezależny projekt i studio tworzone w luźnym klimacie *indie* (inspirowanym twórcami takimi jak InnerSloth). Stawiamy na przejrzystość, błyskawiczne działanie i prostotę bez zbędnego skomplikowania.
+**Aktiv Labs** to niezależny projekt i małe studio (*little studio from Poland*) tworzone w klimacie *indie*. Stawiamy na przejrzystość, nowoczesne podejście, błyskawiczne działanie i estetyczną prostotę bez zbędnego skomplikowania.
 
 W tej dokumentacji znajdziesz:
-* **Przewodniki & Poradniki:** Instrukcje krok po kroku do naszych projektów.
-* **Changelogi:** Najnowsze listy zmian i aktualizacji.
-* **Kulis tworzenia:** Informacje o architekturze oraz zespole.
+- **Przewodniki & Poradniki:** Instrukcje krok po kroku do naszych narzędzi i aplikacji.
+- **Changelogi:** Najnowsze listy zmian, eksperymentów i aktualizacji.
+- **Kulisy tworzenia:** Informacje o architekturze, projektach oraz naszym zespole.
