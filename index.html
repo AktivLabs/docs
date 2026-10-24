@@ -15,7 +15,7 @@
     /* Globalny jasny motyw */
     html, body, main, .content, #app, article {
       background-color: #F8FAFC !important;
-      color: #1E293B !important;
+      color: #334155 !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -73,10 +73,10 @@
       color: #1E293B !important;
     }
 
-    /* Główna treść i nagłówki */
+    /* Główna treść, akapity i nagłówki — wymuszony ciemny tekst na jasnym tle */
     .markdown-section {
       background-color: #F8FAFC !important;
-      color: #334155 !important;
+      color: #475569 !important;
     }
 
     .markdown-section h1, 
@@ -84,6 +84,13 @@
     .markdown-section h3,
     .markdown-section h4 {
       color: #0F172A !important;
+      text-shadow: none !important;
+    }
+
+    .markdown-section p,
+    .markdown-section li,
+    .markdown-section span {
+      color: #334155;
     }
 
     .markdown-section a {
