@@ -10,7 +10,7 @@
   <div style="display: flex; align-items: center; gap: 16px; font-size: 0.82rem; font-weight: 500;">
     <a href="#/" style="color: #64748B !important; text-decoration: none !important;">Strona główna</a>
     <a href="#/wstep" style="color: #64748B !important; text-decoration: none !important;">Wstęp</a>
-    <a href="https://github.com/AktivLabs" target="_blank" style="color: #0EA5E9 !important; text-decoration: none !important;">GitHub ↗</a>
+    <a href="https://github.com/AktivLabs" target="_blank" style="color: #0EA5E9 !important; text-decoration: none !important;">GitHub</a>
   </div>
 
 </div>
