@@ -1,4 +1,4 @@
-<div style="background: #0c0c0f; border-top: 1px solid #1f1f26; padding: 25px 20px; margin-top: 50px; color: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.9rem;">
+<div style="background: #E8F5E9; border-top: 1px solid #C8E6C9; padding: 25px 20px; margin-top: 50px; color: #2E7D32; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.9rem;">
 
   <style>
     .footer-container {
@@ -12,9 +12,9 @@
     }
 
     .footer-social-icon {
-      width: 20px;
-      height: 20px;
-      fill: #94a3b8;
+      width: 18px;
+      height: 18px;
+      fill: #2E7D32;
       transition: all 0.2s ease;
     }
 
@@ -27,16 +27,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #121826;
+      background: #FFFFFF;
       color: #10B981;
-      border: 1px solid #10B981;
+      border: 1px solid #A3E635;
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 700;
       text-decoration: none !important;
       transition: all 0.2s ease;
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     }
 
     .buycoffee-btn svg {
@@ -48,17 +48,17 @@
 
     .buycoffee-btn:hover {
       background: #10B981;
-      color: #080808;
-      box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
+      color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
       transform: translateY(-2px);
     }
 
     .buycoffee-btn:hover svg {
-      fill: #080808;
+      fill: #FFFFFF;
     }
 
     .footer-nav-link {
-      color: #cbd5e1;
+      color: #388E3C;
       text-decoration: none !important;
       transition: color 0.2s ease;
     }
@@ -74,11 +74,15 @@
     <div style="display: flex; align-items: center; gap: 15px;">
       <span style="font-size: 22px;">🧪</span>
       <div>
-        <strong style="color: #ffffff; font-size: 0.95rem; letter-spacing: 0.5px; display: block;">Aktiv Labs</strong>
-        <div style="display: flex; gap: 12px; margin-top: 4px;">
+        <strong style="color: #1B5E20; font-size: 0.95rem; letter-spacing: 0.5px; display: block;">Aktiv Labs</strong>
+        <div style="display: flex; gap: 12px; margin-top: 4px; align-items: center;">
           <!-- GitHub -->
           <a href="https://github.com/AktivLabs" target="_blank" class="footer-social-link" title="GitHub">
             <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <!-- X (Twitter) -->
+          <a href="https://x.com/ewewerban" target="_blank" class="footer-social-link" title="X (Twitter)">
+            <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <!-- YouTube -->
           <a href="https://youtube.com/@Ewewerban" target="_blank" class="footer-social-link" title="YouTube">
@@ -115,7 +119,7 @@
       <!-- Autor -->
       <div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem;">
         <img src="Ewewerban.png" alt="Ewewerban" style="width: 22px; height: 22px; border-radius: 50%; border: 1px solid #10B981; object-fit: cover;">
-        <span>Stworzył <strong style="color: #F97316;">Ewewerban</strong></span>
+        <span style="color: #2E7D32;">Stworzył <strong style="color: #F97316;">Ewewerban</strong></span>
       </div>
 
     </div>
