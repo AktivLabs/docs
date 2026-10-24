@@ -1,8 +1,3 @@
-<div class="author-badge">
-  <img src="Ewewerban.png" alt="Ewewerban">
-  <span>Autor: <strong>Ewewerban</strong></span>
-</div>
-
 # 🧪 Pierwsze Kroki w Aktiv Labs
 
 Oficjalny wstęp do nowej bazy wiedzy i portalu dokumentacji **Aktiv Labs**.
