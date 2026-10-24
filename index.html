@@ -151,19 +151,18 @@
 
       plugins: [
         function(hook, vm) {
+          let headerCache = null;
           let footerCache = null;
 
           hook.afterEach(function(html, next) {
-            if (footerCache) {
-              return next(html + footerCache);
-            }
-            fetch('stopka.md')
-              .then(res => res.text())
-              .then(text => {
-                footerCache = text;
-                next(html + text);
-              })
-              .catch(() => next(html));
+            Promise.all([
+              headerCache ? Promise.resolve(headerCache) : fetch('header.md').then(r => r.text()).catch(() => ''),
+              footerCache ? Promise.resolve(footerCache) : fetch('stopka.md').then(r => r.text()).catch(() => '')
+            ]).then(([headerText, footerText]) => {
+              headerCache = headerText;
+              footerCache = footerText;
+              next(headerText + html + footerText);
+            });
           });
         }
       ],
